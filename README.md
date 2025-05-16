@@ -3,6 +3,7 @@
 <div align="center">
   <img src="assets/images/defaultLogo.png" alt="Mygle ERP Logo" width="300">
 </div>
+
 **Mygle ERP 2.0** é a evolução do sistema anterior em C#, agora transformado em um **ERP em PHP** com módulos fiscais, financeiros e de gestão de vendas.  
 
 ---

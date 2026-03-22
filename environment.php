@@ -1,3 +1,3 @@
 <?php
-define("ENVIRONMENT", "development");
+define("ENVIRONMENT", getenv('APP_ENV') === 'production' ? 'production' : 'development');
 ?>

@@ -4,7 +4,13 @@ require 'vendor/autoload.php';
 require 'config.php';
 
 // BASE_URL dinâmica para rodar tanto local quanto no Render
-$protocol = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http");
+$protocol = "http";
+if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
+    $protocol = "https";
+} elseif (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
+    $protocol = "https";
+}
+
 $base_url = $protocol . "://" . $_SERVER['HTTP_HOST'];
 
 // Ajuste para desenvolvimento local se necessário

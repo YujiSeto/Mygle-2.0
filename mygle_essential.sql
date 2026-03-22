@@ -1,18 +1,17 @@
-﻿	(5560,14,1508407,'Xinguara','PA'),
+	(5560,14,1508407,'Xinguara','PA'),
 	(5561,5,2933604,'Xique-Xique','BA'),
 	(5562,15,2517407,'ZabelÃª','PB'),
 	(5563,25,3557154,'Zacarias','SP'),
 	(5564,10,2114007,'ZÃ© Doca','MA'),
 	(5565,24,4219853,'ZortÃ©a','SC');
 
-/*!40000 ALTER TABLE `Cidade` ENABLE KEYS */;
-UNLOCK TABLES;
+
 
 
 # Dump da tabela clients
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `clients`;
+
 
 CREATE TABLE `clients` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -42,19 +41,17 @@ CREATE TABLE `clients` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-LOCK TABLES `clients` WRITE;
-/*!40000 ALTER TABLE `clients` DISABLE KEYS */;
 
 
 
-/*!40000 ALTER TABLE `clients` ENABLE KEYS */;
-UNLOCK TABLES;
+
+
 
 
 # Dump da tabela companies
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `companies`;
+
 
 CREATE TABLE `companies` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -63,21 +60,19 @@ CREATE TABLE `companies` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-LOCK TABLES `companies` WRITE;
-/*!40000 ALTER TABLE `companies` DISABLE KEYS */;
+
 
 INSERT INTO `companies` (`id`, `name`, `nfe_number`)
 VALUES
 	(1,'Mygle',10000010);
 
-/*!40000 ALTER TABLE `companies` ENABLE KEYS */;
-UNLOCK TABLES;
+
 
 
 # Dump da tabela inventory
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `inventory`;
+
 
 CREATE TABLE `inventory` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -120,16 +115,13 @@ CREATE TABLE `inventory` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-LOCK TABLES `inventory` WRITE;
-/*!40000 ALTER TABLE `inventory` DISABLE KEYS */;
 
-UNLOCK TABLES;
 
 
 # Dump da tabela inventory_history
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `inventory_history`;
+
 
 CREATE TABLE `inventory_history` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -141,17 +133,13 @@ CREATE TABLE `inventory_history` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-LOCK TABLES `inventory_history` WRITE;
-/*!40000 ALTER TABLE `inventory_history` DISABLE KEYS */;
 
-/*!40000 ALTER TABLE `inventory_history` ENABLE KEYS */;
-UNLOCK TABLES;
 
 
 # Dump da tabela permission_groups
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `permission_groups`;
+
 
 CREATE TABLE `permission_groups` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -161,21 +149,19 @@ CREATE TABLE `permission_groups` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-LOCK TABLES `permission_groups` WRITE;
-/*!40000 ALTER TABLE `permission_groups` DISABLE KEYS */;
+
 
 INSERT INTO `permission_groups` (`id`, `id_company`, `name`, `params`)
 VALUES
 	(1,1,'Administradores','1,2,7,9,10,11,12,13,14,15,16,18');
 
-/*!40000 ALTER TABLE `permission_groups` ENABLE KEYS */;
-UNLOCK TABLES;
+
 
 
 # Dump da tabela permission_params
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `permission_params`;
+
 
 CREATE TABLE `permission_params` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -184,8 +170,7 @@ CREATE TABLE `permission_params` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-LOCK TABLES `permission_params` WRITE;
-/*!40000 ALTER TABLE `permission_params` DISABLE KEYS */;
+
 
 INSERT INTO `permission_params` (`id`, `id_company`, `name`)
 VALUES
@@ -202,14 +187,13 @@ VALUES
 	(16,1,'sales_edit'),
 	(18,1,'report_view');
 
-/*!40000 ALTER TABLE `permission_params` ENABLE KEYS */;
-UNLOCK TABLES;
+
 
 
 # Dump da tabela purchases
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `purchases`;
+
 
 CREATE TABLE `purchases` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -225,7 +209,7 @@ CREATE TABLE `purchases` (
 # Dump da tabela purchases_products
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `purchases_products`;
+
 
 CREATE TABLE `purchases_products` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -242,7 +226,7 @@ CREATE TABLE `purchases_products` (
 # Dump da tabela sales
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `sales`;
+
 
 CREATE TABLE `sales` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -256,17 +240,13 @@ CREATE TABLE `sales` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-LOCK TABLES `sales` WRITE;
-/*!40000 ALTER TABLE `sales` DISABLE KEYS */;
 
-/*!40000 ALTER TABLE `sales` ENABLE KEYS */;
-UNLOCK TABLES;
 
 
 # Dump da tabela sales_products
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `sales_products`;
+
 
 CREATE TABLE `sales_products` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -278,17 +258,13 @@ CREATE TABLE `sales_products` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-LOCK TABLES `sales_products` WRITE;
-/*!40000 ALTER TABLE `sales_products` DISABLE KEYS */;
 
-/*!40000 ALTER TABLE `sales_products` ENABLE KEYS */;
-UNLOCK TABLES;
 
 
 # Dump da tabela users
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `users`;
+
 
 CREATE TABLE `users` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -299,15 +275,13 @@ CREATE TABLE `users` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-LOCK TABLES `users` WRITE;
-/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+
 
 INSERT INTO `users` (`id`, `id_company`, `email`, `password`, `id_group`)
 VALUES
 	(1,1,'admin@mygle.com','21232f297a57a5a743894a0e4a801fc3',1);
 
-/*!40000 ALTER TABLE `users` ENABLE KEYS */;
-UNLOCK TABLES;
+
 
 
 

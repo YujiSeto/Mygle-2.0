@@ -3,17 +3,25 @@ session_start();
 require 'vendor/autoload.php';
 require 'config.php';
 
-define('BASE_URL', 'http://localhost/mygle');
+// BASE_URL dinâmica para rodar tanto local quanto no Render
+$protocol = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http");
+$base_url = $protocol . "://" . $_SERVER['HTTP_HOST'];
+
+// Ajuste para desenvolvimento local se necessário
+if ($_SERVER['HTTP_HOST'] == 'localhost') {
+    $base_url .= '/mygle';
+}
+define('BASE_URL', $base_url);
 
 spl_autoload_register(function ($class){
     if(strpos($class, 'Controller') > -1) {
         if(file_exists('controllers/'.$class.'.php')) {
-                require_once 'controllers/'.$class.'.php';
+            require_once 'controllers/'.$class.'.php';
         }
     } elseif(file_exists('models/'.$class.'.php')) {
-            require_once 'models/'.$class.'.php';
-    } elseif(file_exists('core/'.$class.'.php')) {
-            require_once 'core/'.$class.'.php';
+        require_once 'models/'.$class.'.php';
+    } elseif(file_exists('core/'.strtolower($class).'.php')) {
+        require_once 'core/'.strtolower($class).'.php';
     }
 });
 

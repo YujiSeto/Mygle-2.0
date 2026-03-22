@@ -13,8 +13,9 @@ class controller {
 			PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
 		);
 
-		// Se o host não for localhost, tentamos usar SSL
+		// Se o host não for localhost, exigimos SSL (TiDB Cloud exige)
 		if ($config['host'] !== 'localhost' && $config['host'] !== '127.0.0.1') {
+			$options[PDO::MYSQL_ATTR_SSL_CA] = '/etc/ssl/certs/ca-certificates.crt';
 			$options[PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT] = true;
 		}
 

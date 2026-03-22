@@ -13,13 +13,10 @@ class controller {
 			PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
 		);
 
-		// Blunderbuss SSL for TiDB Cloud (Forces SSL handshake)
+		// Local CA for TiDB Cloud
 		if (strpos($config['host'], 'tidbcloud.com') !== false) {
-			$options[1007] = ''; // PDO::MYSQL_ATTR_SSL_CA
-			$options[1008] = ''; // PDO::MYSQL_ATTR_SSL_CAPATH
-			$options[1009] = ''; // PDO::MYSQL_ATTR_SSL_KEY
-			$options[1010] = ''; // PDO::MYSQL_ATTR_SSL_CERT
-			$options[1014] = false; // PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT
+			$options[PDO::MYSQL_ATTR_SSL_CA] = __DIR__ . '/../isrgrootx1.pem';
+			$options[PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT] = false;
 		}
 
 		$this->db = new PDO($dsn, $config['dbuser'], $config['dbpass'], $options);

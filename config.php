@@ -10,6 +10,7 @@ $config['dbname'] = getenv('DB_NAME') ?: 'mygle';
 $config['host']   = getenv('DB_HOST') ?: 'localhost';
 $config['dbuser'] = getenv('DB_USER') ?: 'root';
 $config['dbpass'] = getenv('DB_PASS') ?: 'root';
+$config['dbport'] = getenv('DB_PORT') ?: '3306';
 
 // Opcional: Se precisar de mais configurações baseadas no ambiente
 if(ENVIRONMENT == 'development') {

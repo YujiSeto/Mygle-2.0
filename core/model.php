@@ -13,15 +13,10 @@ class model {
 			PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
 		);
 
-		// Se o host não for localhost, exigimos SSL (TiDB Cloud exige)
-		if ($config['host'] !== 'localhost' && $config['host'] !== '127.0.0.1') {
-			// Tenta os caminhos comuns de CA no Linux (Render)
-			if (file_exists('/etc/ssl/certs/ca-certificates.crt')) {
-				$options[PDO::MYSQL_ATTR_SSL_CA] = '/etc/ssl/certs/ca-certificates.crt';
-			} elseif (file_exists('/etc/pki/tls/certs/ca-bundle.crt')) {
-				$options[PDO::MYSQL_ATTR_SSL_CA] = '/etc/pki/tls/certs/ca-bundle.crt';
-			}
-			$options[PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT] = false;
+		// Se o host for TiDB Cloud, exigimos SSL
+		if (strpos($config['host'], 'tidbcloud.com') !== false) {
+			$options[1007] = file_exists('/etc/ssl/certs/ca-certificates.crt') ? '/etc/ssl/certs/ca-certificates.crt' : '';
+			$options[1014] = false;
 		}
 
 		$this->db = new PDO($dsn, $config['dbuser'], $config['dbpass'], $options);

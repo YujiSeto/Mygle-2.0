@@ -9,7 +9,7 @@ class controller {
 		
 		// Opções para o PDO, incluindo SSL se necessário (TiDB Cloud exige)
 		$options = array(
-			PDO::ATTR_ERRMSG_MODE => PDO::ERRMODE_EXCEPTION,
+			PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
 			PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
 		);
 
